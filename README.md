@@ -1,6 +1,7 @@
 # WeatherForecastAssignment
 
 Main code Branch: develop
+
 This project is made for forecast 5 days weather according to passed zip code.
 
 1. Added Test case for ViewModel and Time Utils class. For run the test case Go to test folder (com.example.weatherapp.test) and right click to run all tests.
