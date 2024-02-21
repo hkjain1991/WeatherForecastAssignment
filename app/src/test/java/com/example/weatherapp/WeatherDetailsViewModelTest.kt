@@ -1,6 +1,7 @@
 package com.example.weatherapp
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.example.weatherapp.enum.WeatherDetailsScreenError
 import com.example.weatherapp.model.response.WeatherListData
 import com.example.weatherapp.repository.RemoteRepository
 import com.example.weatherapp.viewmodel.WeatherDetailsViewModel
@@ -51,6 +52,7 @@ class WeatherDetailsViewModelTest {
         viewModel.callUpcomingWeatherDetails("305901", mock, dispatcher)
 
         assertEquals(viewModel.weatherLiveData.value?.isEmpty(), true)
+        assertNull(viewModel.error.value)
     }
 
     @Test
@@ -62,5 +64,6 @@ class WeatherDetailsViewModelTest {
         viewModel.callUpcomingWeatherDetails("305901", mock, dispatcher)
 
         assertNull(viewModel.weatherLiveData.value)
+        assertEquals(viewModel.error.value, WeatherDetailsScreenError.RESULTS_NOT_AVAILABLE)
     }
 }
