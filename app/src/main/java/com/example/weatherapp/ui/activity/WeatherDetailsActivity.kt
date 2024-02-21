@@ -1,40 +1,38 @@
 package com.example.weatherapp.ui.activity
 
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.EditText
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.R
 import com.example.weatherapp.adapter.WeatherListAdapter
+import com.example.weatherapp.databinding.ActivityWeatherDetailsBinding
 import com.example.weatherapp.utils.Constants
 import com.example.weatherapp.utils.InternetConnection
 import com.example.weatherapp.viewmodel.WeatherDetailsViewModel
 
 class WeatherDetailsActivity : AppCompatActivity() {
     private val weatherDetailsViewModel: WeatherDetailsViewModel by viewModels()
-
+    private lateinit var activityWeatherDetailsBinding: ActivityWeatherDetailsBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_weather_details)
+        activityWeatherDetailsBinding = ActivityWeatherDetailsBinding.inflate(layoutInflater)
+        setContentView(activityWeatherDetailsBinding.root)
         setupClickListeners()
         setupObservers()
     }
 
     private fun setupObservers() {
         weatherDetailsViewModel.weatherLiveData.observe(this) { weatherList ->
-            val progressBar = findViewById<ProgressBar>(R.id.proBar)
-            val recyclerView: RecyclerView = findViewById(R.id.weatherList)
+            val recyclerView: RecyclerView = activityWeatherDetailsBinding.weatherList
             val customAdapter = WeatherListAdapter(emptyList())
             recyclerView.layoutManager = LinearLayoutManager(this)
             recyclerView.adapter = customAdapter
-            progressBar.visibility = View.GONE
+            activityWeatherDetailsBinding.proBar.visibility = View.GONE
             weatherList?.let {
                 recyclerView.visibility = View.VISIBLE
                 customAdapter.updateList(it)
@@ -48,8 +46,8 @@ class WeatherDetailsActivity : AppCompatActivity() {
     }
 
     private fun setupClickListeners() {
-        val editText = findViewById<EditText>(R.id.zipCodeEdt)
-        val progressBar = findViewById<ProgressBar>(R.id.proBar)
+        val editText = activityWeatherDetailsBinding.zipCodeEdt
+        val progressBar = activityWeatherDetailsBinding.proBar
         editText.setOnClickListener {
             if (editText.length() < applicationContext.resources.getInteger(R.integer.zipcode_length)) {
                 Toast.makeText(
