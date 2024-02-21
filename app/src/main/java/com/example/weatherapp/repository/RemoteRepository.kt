@@ -1,4 +1,4 @@
-package com.example.weatherapp.service
+package com.example.weatherapp.repository
 
 import com.example.weatherapp.enum.TempUnits
 import com.example.weatherapp.model.response.WeatherListData
@@ -6,7 +6,7 @@ import com.example.weatherapp.retrofit.APIClient
 import com.example.weatherapp.retrofit.OpenWeatherApi
 import com.example.weatherapp.utils.Constants
 
-class WeatherService {
+class RemoteRepository {
     suspend fun getUpcomingWeatherData(zipCode: String): WeatherListData? {
         val openWeatherApi = APIClient.getInstance().create(OpenWeatherApi::class.java)
         return openWeatherApi.getUpcomingDaysWeather(

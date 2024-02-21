@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.weatherapp.model.response.WeatherDetails
-import com.example.weatherapp.service.WeatherService
+import com.example.weatherapp.repository.RemoteRepository
 import kotlinx.coroutines.launch
 
 class WeatherDetailsViewModel : ViewModel() {
@@ -17,10 +17,10 @@ class WeatherDetailsViewModel : ViewModel() {
 
     fun getWeatherDataAccordingToZipCode(
         zipcode: String,
-        weatherService: WeatherService = WeatherService()
+        remoteRepository: RemoteRepository = RemoteRepository()
     ) {
         viewModelScope.launch {
-            val weatherLists = weatherService.getUpcomingWeatherData(
+            val weatherLists = remoteRepository.getUpcomingWeatherData(
                 zipcode
             )
             weatherLists?.let {

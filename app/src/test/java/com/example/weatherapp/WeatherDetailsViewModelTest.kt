@@ -2,7 +2,7 @@ package com.example.weatherapp
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.weatherapp.model.response.WeatherListData
-import com.example.weatherapp.service.WeatherService
+import com.example.weatherapp.repository.RemoteRepository
 import com.example.weatherapp.viewmodel.WeatherDetailsViewModel
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -44,7 +44,7 @@ class WeatherDetailsViewModelTest {
 
     @Test
     fun `test to verify tht weather data has got success`() = runTest {
-        val mock = mockk<WeatherService>()
+        val mock = mockk<RemoteRepository>()
 
         coEvery {
             mock.getUpcomingWeatherData("305901")
@@ -56,7 +56,7 @@ class WeatherDetailsViewModelTest {
 
     @Test
     fun `test to verify tht weather data has null body`() = runTest {
-        val mock = mockk<WeatherService>()
+        val mock = mockk<RemoteRepository>()
         coEvery {
             mock.getUpcomingWeatherData("305901")
         } returns null

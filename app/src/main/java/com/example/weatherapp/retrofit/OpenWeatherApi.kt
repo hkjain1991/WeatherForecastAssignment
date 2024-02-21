@@ -9,7 +9,6 @@ import retrofit2.http.Query
 
 interface OpenWeatherApi {
 
-    // Units should be passed from TempUnits Enum
     @GET("/data/2.5/forecast")
     suspend fun getUpcomingDaysWeather(
         @Query("zip") zipcode: String,
