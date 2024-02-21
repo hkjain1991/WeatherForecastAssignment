@@ -6,7 +6,5 @@ class Constants {
         const val COUNTRY_CODE = "IN"
         const val TOTAL_NO_RESULT = 40
         const val COMMA = ","
-        const val HUMIDITY = "H:"
-        const val PERCENTAGE = "%"
     }
 }

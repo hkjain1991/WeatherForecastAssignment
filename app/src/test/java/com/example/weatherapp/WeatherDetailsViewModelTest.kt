@@ -45,11 +45,10 @@ class WeatherDetailsViewModelTest {
     @Test
     fun `test to verify tht weather data has got success`() = runTest {
         val mock = mockk<RemoteRepository>()
-
         coEvery {
             mock.getUpcomingWeatherData("305901")
         } returns WeatherListData(emptyList())
-        viewModel.getWeatherDataAccordingToZipCode("305901", mock)
+        viewModel.callUpcomingWeatherDetails("305901", mock, dispatcher)
 
         assertEquals(viewModel.weatherLiveData.value?.isEmpty(), true)
     }
@@ -60,7 +59,7 @@ class WeatherDetailsViewModelTest {
         coEvery {
             mock.getUpcomingWeatherData("305901")
         } returns null
-        viewModel.getWeatherDataAccordingToZipCode("305901", mock)
+        viewModel.callUpcomingWeatherDetails("305901", mock, dispatcher)
 
         assertNull(viewModel.weatherLiveData.value)
     }
