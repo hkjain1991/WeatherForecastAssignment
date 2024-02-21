@@ -20,6 +20,7 @@ class WeatherDetailsActivity : AppCompatActivity() {
     private val weatherDetailsViewModel: WeatherDetailsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weather_details)
         setupClickListeners()
@@ -30,13 +31,15 @@ class WeatherDetailsActivity : AppCompatActivity() {
         weatherDetailsViewModel.weatherLiveData.observe(this) { weatherList ->
             val progressBar = findViewById<ProgressBar>(R.id.proBar)
             val recyclerView: RecyclerView = findViewById(R.id.weatherList)
+            val customAdapter = WeatherListAdapter(emptyList())
+            recyclerView.layoutManager = LinearLayoutManager(this)
+            recyclerView.adapter = customAdapter
             progressBar.visibility = View.GONE
             weatherList?.let {
                 recyclerView.visibility = View.VISIBLE
-                val customAdapter = WeatherListAdapter(it)
-                recyclerView.layoutManager = LinearLayoutManager(this)
-                recyclerView.adapter = customAdapter
+                customAdapter.updateList(it)
             } ?: kotlin.run {
+                customAdapter.updateList(emptyList())
                 recyclerView.visibility = View.GONE
                 Toast.makeText(this, R.string.weather_info_unavailable, Toast.LENGTH_SHORT)
                     .show()

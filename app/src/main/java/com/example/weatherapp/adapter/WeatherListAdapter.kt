@@ -8,10 +8,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.R
 import com.example.weatherapp.model.response.WeatherDetails
+import com.example.weatherapp.model.response.WeatherListData
 import com.example.weatherapp.utils.Constants
 import com.example.weatherapp.utils.TimeUtil
 
-class WeatherListAdapter(private val weatherList: List<WeatherDetails>) :
+class WeatherListAdapter(private var weatherList: List<WeatherDetails>) :
     RecyclerView.Adapter<WeatherListAdapter.ViewHolder>() {
 
     /**
@@ -47,6 +48,12 @@ class WeatherListAdapter(private val weatherList: List<WeatherDetails>) :
         viewHolder.humidity.text = "${Constants.HUMIDITY}${weatherDetails.main.humidity}${Constants.PERCENTAGE}"
         viewHolder.time.text = TimeUtil.extractTimeFromString(weatherDetails.dt_txt)
         viewHolder.date.text = TimeUtil.extractDateFromString(weatherDetails.dt_txt)
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateList(weatherLists: List<WeatherDetails>) {
+        this.weatherList = weatherLists
+        notifyDataSetChanged()
     }
 
     // Return the size of your dataset (invoked by the layout manager)
