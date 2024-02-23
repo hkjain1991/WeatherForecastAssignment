@@ -5,7 +5,8 @@ import org.junit.Test
 import org.junit.Assert.assertEquals
 
 /**
- * Test for [TimeUtil]
+ * Tests for [TimeUtil]
+ * @author hemeandra jain
  */
 class TimeUtilsTest {
     @Test

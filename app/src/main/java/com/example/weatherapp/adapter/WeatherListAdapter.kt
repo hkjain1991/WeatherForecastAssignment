@@ -11,6 +11,11 @@ import com.example.weatherapp.databinding.WeatherItemViewBinding
 import com.example.weatherapp.model.response.WeatherDetails
 import com.example.weatherapp.utils.TimeUtil
 
+/**
+ * Adapter for showing weather forecast details.
+ * @param weatherList [List<WeatherDetails>]
+ * @author hemeandra jain
+ */
 class WeatherListAdapter(private var weatherList: List<WeatherDetails>) :
     RecyclerView.Adapter<WeatherListAdapter.ViewHolder>() {
 

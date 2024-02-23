@@ -3,6 +3,9 @@ package com.example.weatherapp.utils
 import java.text.SimpleDateFormat
 import java.util.Locale
 
+/**
+ * Utility functions for getting time in proper format
+ */
 class TimeUtil {
     companion object {
         fun extractTimeFromString(dateTimeString: String): String {

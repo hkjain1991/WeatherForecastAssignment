@@ -7,6 +7,10 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+/**
+ * Interface to hold the all api for open weather forecast
+ * @author hemeandra jain
+ */
 interface OpenWeatherApi {
 
     @GET("/data/2.5/forecast")

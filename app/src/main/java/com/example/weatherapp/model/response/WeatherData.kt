@@ -1,5 +1,9 @@
 package com.example.weatherapp.model.response
 
+/**
+ * Data class For WeatherData
+ * @author hemeandra jain
+ */
 data class WeatherData(
     val base: String,
     val clouds: Clouds,

@@ -14,6 +14,9 @@ import com.example.weatherapp.databinding.ActivityWeatherDetailsBinding
 import com.example.weatherapp.enum.WeatherDetailsScreenError
 import com.example.weatherapp.viewmodel.WeatherDetailsViewModel
 
+/**
+ * Activity for showing weather forecast
+ */
 class WeatherDetailsActivity : AppCompatActivity() {
     private val weatherDetailsViewModel: WeatherDetailsViewModel by viewModels()
     private lateinit var activityWeatherDetailsBinding: ActivityWeatherDetailsBinding
@@ -26,6 +29,9 @@ class WeatherDetailsActivity : AppCompatActivity() {
         setupObservers()
     }
 
+    /**
+     * Sets up the observers
+     */
     private fun setupObservers() {
         val recyclerView: RecyclerView = activityWeatherDetailsBinding.weatherList
         val customAdapter = WeatherListAdapter(emptyList())
@@ -68,6 +74,9 @@ class WeatherDetailsActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Sets up the click listeners
+     */
     private fun setupClickListeners() {
         val editText = activityWeatherDetailsBinding.zipCodeEdt
         val progressBar = activityWeatherDetailsBinding.proBar

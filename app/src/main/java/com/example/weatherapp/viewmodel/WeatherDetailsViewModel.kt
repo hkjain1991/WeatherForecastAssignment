@@ -16,6 +16,10 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+/**
+ * View Model for [WeatherDetailsActivity] and [RemoteRepository]
+ * @author hemeandra jain
+ */
 class WeatherDetailsViewModel : ViewModel() {
 
     private val _weatherLiveData: MutableLiveData<List<WeatherDetails>?> =

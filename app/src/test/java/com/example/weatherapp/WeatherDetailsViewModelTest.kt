@@ -23,6 +23,7 @@ import org.junit.rules.TestRule
 
 /**
  * Test for [WeatherDetailsViewModel]
+ * @author hemeandra jain
  */
 class WeatherDetailsViewModelTest {
 
